@@ -13,16 +13,17 @@ class MoedasPage extends StatelessWidget {
         title: const Text('Cripto Moedas'),
       ),
       body: ListView.separated(
-          itemBuilder: (BuildContext context, int moeda) {
-            return ListTile(
-              leading: Image.asset(tabela[moeda].icone),
-              title: Text(tabela[moeda].nome),
-              trailing: Text(tabela[moeda].preco.toString()),
-            );
-          },
-          padding: const EdgeInsets.all(16),
-          separatorBuilder: (_, __) => const Divider(),
-          itemCount: tabela.length),
+        itemBuilder: (BuildContext context, int moeda) {
+          return ListTile(
+            leading: Image.asset(tabela[moeda].icone),
+            title: Text(tabela[moeda].nome),
+            trailing: Text(tabela[moeda].preco.toString()),
+          );
+        },
+        padding: const EdgeInsets.all(16),
+        separatorBuilder: (_, __) => const Divider(),
+        itemCount: tabela.length,
+      ),
     );
   }
 }
