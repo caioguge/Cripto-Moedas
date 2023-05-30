@@ -11,13 +11,14 @@ class MoedasPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cripto Moedas'),
+        centerTitle: true,
       ),
       body: ListView.separated(
         itemBuilder: (BuildContext context, int moeda) {
           return ListTile(
             leading: Image.asset(tabela[moeda].icone),
             title: Text(tabela[moeda].nome),
-            trailing: Text(tabela[moeda].preco.toString()),
+            trailing: Text('R\$ ${tabela[moeda].preco}'),
           );
         },
         padding: const EdgeInsets.all(16),
