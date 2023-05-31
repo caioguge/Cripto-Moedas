@@ -34,10 +34,14 @@ class _MoedasPageState extends State<MoedasPage> {
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
-            leading: SizedBox(
-              width: 40,
-              child: Image.asset(tabela[moeda].icone),
-            ),
+            leading: (selecionadas.contains(tabela[moeda]))
+                ? const CircleAvatar(
+                    child: Icon(Icons.check),
+                  )
+                : SizedBox(
+                    width: 40,
+                    child: Image.asset(tabela[moeda].icone),
+                  ),
             title: Text(
               tabela[moeda].nome,
               style: const TextStyle(
