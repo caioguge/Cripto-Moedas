@@ -38,7 +38,11 @@ class _MoedasPageState extends State<MoedasPage> {
               });
             },
           ),
-          title: Text('${selecionadas.length} Moedas selecionadas'),
+          centerTitle: true,
+          title: Text(
+            '${selecionadas.length} selecionadas',
+            style: const TextStyle(color: Colors.black87),
+          ),
           backgroundColor: Colors.blueGrey[50],
           elevation: 1,
           iconTheme: const IconThemeData(color: Colors.black87),
@@ -96,14 +100,17 @@ class _MoedasPageState extends State<MoedasPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: selecionadas.isNotEmpty
-          ? FloatingActionButton.extended(
-              onPressed: () {},
-              icon: const Icon(Icons.star),
-              label: const Text(
-                'FAVORITAR',
-                style: TextStyle(
-                  letterSpacing: 0,
-                  fontWeight: FontWeight.bold,
+          ? Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: FloatingActionButton.extended(
+                onPressed: () {},
+                icon: const Icon(Icons.star),
+                label: const Text(
+                  'FAVORITAR',
+                  style: TextStyle(
+                    letterSpacing: 0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             )
