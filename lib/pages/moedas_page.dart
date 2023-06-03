@@ -23,11 +23,36 @@ class _MoedasPageState extends State<MoedasPage> {
     // Package para trabalhar com moedas de um determinado país, nesse caso o Brasil.
     NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
 
+    appBarDinamica() {
+      if (selecionadas.isEmpty) {
+        return AppBar(
+          title: const Text('Cripto Moedas'),
+        );
+      } else {
+        return AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              setState(() {
+                selecionadas = [];
+              });
+            },
+          ),
+          title: Text('${selecionadas.length} Moedas selecionadas'),
+          backgroundColor: Colors.blueGrey[50],
+          elevation: 1,
+          iconTheme: const IconThemeData(color: Colors.black87),
+          toolbarTextStyle: const TextStyle(
+            color: Colors.black87,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        );
+      }
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cripto Moedas'),
-        centerTitle: true,
-      ),
+      appBar: appBarDinamica(),
       body: ListView.separated(
         itemBuilder: (BuildContext context, int moeda) {
           return ListTile(
@@ -69,6 +94,20 @@ class _MoedasPageState extends State<MoedasPage> {
         separatorBuilder: (_, __) => const Divider(),
         itemCount: tabela.length,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: selecionadas.isNotEmpty
+          ? FloatingActionButton.extended(
+              onPressed: () {},
+              icon: const Icon(Icons.star),
+              label: const Text(
+                'FAVORITAR',
+                style: TextStyle(
+                  letterSpacing: 0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          : null,
     );
   }
 }
