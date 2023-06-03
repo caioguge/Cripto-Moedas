@@ -1,4 +1,5 @@
 import 'package:cripto_moedas/models/moeda.dart';
+import 'package:cripto_moedas/pages/moeda_detalhes_page.dart';
 import 'package:cripto_moedas/repositories/moeda_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -26,6 +27,7 @@ class _MoedasPageState extends State<MoedasPage> {
     appBarDinamica() {
       if (selecionadas.isEmpty) {
         return AppBar(
+          centerTitle: true,
           title: const Text('Cripto Moedas'),
         );
       } else {
@@ -53,6 +55,14 @@ class _MoedasPageState extends State<MoedasPage> {
           ),
         );
       }
+    }
+
+    mostrarDetalhes(Moeda moeda) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => MoedaDetalhesPage(moeda: moeda),
+        ),
+      );
     }
 
     return Scaffold(
@@ -92,6 +102,7 @@ class _MoedasPageState extends State<MoedasPage> {
                 debugPrint(selecionadas.toString());
               });
             },
+            onTap: () => mostrarDetalhes(tabela[moeda]),
           );
         },
         padding: const EdgeInsets.all(16),
